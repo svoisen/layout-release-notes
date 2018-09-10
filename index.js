@@ -25,12 +25,12 @@ function formatBug(bug) {
 function formatCollatedBugs(collatedBugs) {
   let lines = [];
 
-  Object.keys(collatedBugs).forEach(key => {
+  Object.keys(collatedBugs).sort().forEach(key => {
     lines.push(`===${key}===`)
     lines = lines.concat(collatedBugs[key].map(formatBug));
   });
 
-  return lines.join('\n');
+  return lines.join('\n\n');
 }
 
 function main() {
@@ -63,6 +63,9 @@ function main() {
       'Printing: Setup',
       'SVG'
     ],
+    f1: 'bug_group',
+    o1: 'nowordssubstr',
+    v1: 'sec',
     short_desc: '^\\[wpt\\-sync\\]',
     short_desc_type: 'notregexp',
     target_milestone: 'mozilla62'
